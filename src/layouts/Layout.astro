@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css' 
+import Background from '../components/Background.astro';
 ---
 
 <!doctype html>
@@ -13,9 +14,7 @@ import '../styles/global.css'
 	</head>
 	<body>
 
-		<div class="stars"></div>
-		<div class="twinkling"></div> 
-		<div class="clouds"></div>
+		<Background/>
 
 		<slot />
 		
