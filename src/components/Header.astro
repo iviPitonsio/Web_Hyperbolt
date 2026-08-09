@@ -1,0 +1,50 @@
+---
+import '../styles/global.css' 
+import { Icon } from 'astro-icon/components';
+
+---
+
+<header class= "sticky top-0 z-50 w-full">
+
+    <nav class="flex flex-row justify-between items-center min-h-20 px-4 bg-black shadow-md text-white">
+        
+        <div class="flex flex-row gap-3 items-center shrink-0">
+            <img src="src/assets/HB_Color_NoBG.png" alt="Logo" class="h-12 w-12" />
+            <h1 class="text-xl font-bold">Hyperbolt Studio</h1>
+        </div>
+
+        <div class="hidden lg:flex flex-row items-center gap-6 xl:gap-8 ml-auto md:mr-15 w-full md:w-auto md:ml-auto pb-2 md:pb-0 no-scrollbar">
+
+            <div class="flex flex-row items-center gap-8">
+                <a href="/" class="text-white hover:text-gray-400">Home</a>
+                <a href="/about" class="text-white hover:text-gray-400">About</a>
+                <a href="/contact" class="text-white hover:text-gray-400">Nuestro trabajo</a>
+                <a href="/contact" class="text-white hover:text-gray-400">Servicios</a>
+                <a href="/contact" class="text-white hover:text-gray-400">Contacto</a>
+                
+                <div class="h-5 w-px bg-slate-800"></div>
+
+                <div class="flex flex-row gap-2 items-center">
+
+                    <a href="https://www.youtube.com/@HyperboltStudios" target="_blank" class="text-white hover:text-red-300  bg-red-600 px-2 py-2 rounded-2xl transition-all duration-300 hover:scale-110">
+                        <Icon name="simple-icons:youtube" class="md:w-6 md:h-6 w-4 h-4"/>
+                    </a>
+
+                    <a href="https://www.instagram.com/hyperboltstudios" target="_blank" class="text-white hover:text-pink-300  bg-pink-600 px-2 py-2 rounded-2xl transition-all duration-300 hover:scale-110">
+                        <Icon name="simple-icons:instagram" class="md:w-6 md:h-6 w-4 h-4"/>
+                    </a>
+
+                    <a href="https://www.tiktok.com/@hyperboltstudios" target="_blank" class="text-white hover:text-gray-300  bg-gray-600 px-2 py-2 rounded-2xl transition-all duration-300 hover:scale-110">
+                        <Icon name="simple-icons:tiktok" class="md:w-6 md:h-6 w-4 h-4"/>
+                    </a>
+
+                    <a href="https://www.youtube.com/@HyperboltStudios" target="_blank" class="text-white hover:text-blue-300  bg-blue-600 px-2 py-2 rounded-2xl transition-all duration-300 hover:scale-110">
+                        <Icon name="simple-icons:linkedin" class="md:w-6 md:h-6 w-4 h-4"/>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+</header>
