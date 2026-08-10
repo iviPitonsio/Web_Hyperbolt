@@ -1,11 +1,152 @@
+---
+const proyectos = [
+  {
+    titulo: 'Las Vegas',
+    descripcion: 'Videoclip para el artista Acereda en el que mezclamos el 2D y el 3D con una ambientación basada en un casino de Las Vegas.',
+    video: 'https://www.youtube.com/embed/C3Ia4-RBNl4', 
+
+    charact: [
+		{tipo: 'Videoclip', dimensiones: '2D y 3D' },
+  	],
+    
+  },
+
+  {
+    titulo: 'Hazte con Todos',
+    descripcion: 'Videoclip para el artista Aledial en el que buscamos acompañar su tema con una ambientación especial y macarra.',
+    video: 'https://youtube.com/embed/nW2h6YLNPEc', 
+
+    charact: [
+		{tipo: 'Videoclip', dimensiones: '3D' },
+  	],
+    
+  },
+
+  {
+    titulo: 'Nadie Más',
+    descripcion: 'Videoclip para el artista Acereda donde quisimos celebrar su último tema con una pequeña historia.',
+    video: 'https://youtube.com/embed/GOZ-Spw9gg4', 
+
+    charact: [
+		{tipo: 'Videoclip', dimensiones: '2D' },
+  	],
+    
+  },
+
+
+];
+---
+
 <div class="flex flex-col items-center justify-center gap-5 mt-20 text-white leading-relaxed">
 
-    <h1 class="text-5xl font-bold">Nuestro trabajo</h1>
+    <h1 id="work" class="text-5xl font-bold">Nuestro trabajo</h1>
+
+    <div id="projects" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-7xl mt-10 justify-items-center rounded-4xl z-20">
+
+        {proyectos.map((pro) => (
+            
+            <div class="bg-black text-white rounded-2xl border border-slate-800 overflow-hidden transition-all duration-300 hover:scale-105 hover:border-cyan-500 hover:shadow-2xl shadow-cyan-500/50 h-full w-full">
+
+                <iframe
+
+                    src={pro.video}
+                    class="aspect-video w-full h-full object-cover object-top md:h-48 relative"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+
+                <div class="flex flex-col items-center p-5">
+
+                    <h3 class="font-bold items-center text-2xl">{pro.titulo}</h3>
+
+                    <div class="flex flex-row gap-3 p-5 border-red">
+
+                        {pro.charact.map((char) => (
+                            <div class="rounded-2xl p-2 gap-2 text-xs bg-black items-center border border-white">
+                                {char.tipo}
+                                
+                            </div>
+
+                            <div class="rounded-2xl p-2 gap-2 text-xs bg-black items-center border border-white">
+                                {char.dimensiones}
+                                
+                            </div>
+
+                        ))}
+
+                    </div>
+
+                    <p class="text-justify leading-relaxed">{pro.descripcion}</p>
+
+                </div>      
+
+            </div>
+            
+        ))}
+        
+
+
+
+    </div>
 
     
-    <div class="rounded-4xl p-2 transition-all  duration-300 hover:scale-110"
-    style={{ background: 'linear-gradient(120deg, #e8e6e3 0%, #F3FF45 5%, #FFDD45 16%, #D49B46 84%, #A37B3E 87%, #544227 100%)' }}>
-        <a href="/descubrenos" class="text-white font-bold p-8">Nuestro portfolio</a>
+    <div id="button" class=" opacity-0 mt-10">
+        <a href="/descubrenos" class="block text-white font-bold p-3 bg-black border border-white rounded-4xl transition-all duration-300 hover:scale-105 mt-5">Ver más</a>
     </div>
 
 </div>
+
+<script>
+
+import SplitType from "split-type";
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
+
+    let workText = new SplitType('#work');
+    
+    
+    gsap.from(workText.chars, {
+        y: '100%',
+        stagger: 0.05,
+        delay: 0.2,
+        duration: 0.5,
+        ease: 'power2.out',
+        autoAlpha: 1,
+
+        scrollTrigger: {
+            trigger: "#work",
+            start: "bottom 105%",
+            markers: true
+    }
+    });
+
+    gsap.from('#projects', {
+        x: '-500%',
+        delay: 0.2,
+        duration: 1.5,
+        ease: 'power2.out',
+        autoAlpha: 1,
+
+        scrollTrigger: {
+            trigger: "#projects",
+            start: "top 70%",
+            markers: true
+    }
+
+    });
+
+    gsap.to('#buttonWork', {
+        y: '-50%',
+        delay: 5.0,
+        autoAlpha: 1,
+        ease: 'power2.out',
+        scrollTrigger: {
+            trigger: "#projects",
+            start: "top 70%",
+            markers: true
+        }
+    });
+
+
+</script>
