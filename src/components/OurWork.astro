@@ -39,13 +39,16 @@ const proyectos = [
 
 <div class="flex flex-col items-center justify-center gap-5 mt-20 text-white leading-relaxed">
 
-    <h1 id="work" class="text-5xl font-bold">Nuestro trabajo</h1>
+    <div class="flex flex-col gap-3 items-center">
+        <h1 id="work" class="text-5xl font-bold">Nuestro trabajo</h1>
+        <span id="sub02" class="h-1 rounded-full w-90 bg-blue-500 shadow-[0_0_12px_#87efff,0_0_12px_#87efff]"></span>
+    </div>
 
     <div id="projects" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-7xl mt-10 justify-items-center rounded-4xl z-20">
 
         {proyectos.map((pro) => (
             
-            <div class="bg-black text-white rounded-2xl border border-slate-800 overflow-hidden transition-all duration-300 hover:scale-105 hover:border-cyan-500 hover:shadow-2xl shadow-cyan-500/50 h-full w-full">
+            <div class=" text-white bg-black rounded-2xl border border-slate-800 overflow-hidden transition-all duration-300 hover:scale-105 hover:border-cyan-500 hover:shadow-2xl shadow-cyan-500/50 h-full w-full">
 
                 <iframe
 
@@ -112,11 +115,11 @@ gsap.registerPlugin(ScrollTrigger);
         delay: 0.2,
         duration: 0.5,
         ease: 'power2.out',
-        autoAlpha: 1,
+        autoAlpha: 0,
 
         scrollTrigger: {
-            trigger: "#work",
-            start: "bottom 105%",
+            trigger: "#projects",
+            start: "top 100%",
             markers: true
     }
     });
@@ -143,9 +146,20 @@ gsap.registerPlugin(ScrollTrigger);
         ease: 'power2.out',
         scrollTrigger: {
             trigger: "#projects",
-            start: "top 70%",
+            start: "bottom 70%",
             markers: true
         }
+    });
+
+    gsap.from('#sub02', {
+        y: '100%',
+        delay: 1.0,
+        duration: 1.0,
+        autoAlpha: 0,
+        scrollTrigger: {
+            trigger: "#projects",
+            start: "top 100%",
+    }
     });
 
 

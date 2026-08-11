@@ -1,1 +1,52 @@
 @import "tailwindcss";
+
+body{
+    margin:0;
+    background-color: black;
+}
+
+#particle-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    perspective: 1000px;
+    z-index: -10;
+}
+
+.particle{
+    position: absolute;
+    border-radius: 50%;
+    background-color: var(--backgroundColor);
+    box-shadow: 0 0 6px 4px var(--backgroundColor);
+    box-shadow: 0 0 6px 4px var(--backgroundColor);
+    
+    
+    animation-name: particlesMovement;
+    animation-duration: 200s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-delay: var(--delay);
+}
+
+.particle:nth-child(odd){
+    height: 7px;
+    width: 7px;
+}
+
+.particle:nth-child(even){
+    height: 5px;
+    width: 5px;
+}
+
+@keyframes particlesMovement {
+    0% {
+        transform: translate3d(var(--startX), var(--startY), 0px);
+    }
+    100% {
+        transform: translate3d(var(--endX), var(--endY), 50px);
+    }
+}
+

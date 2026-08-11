@@ -57,22 +57,4 @@ import Menu from '../components/Menu.astro';
 
 
 
-<script>
-  
-  const checkbox = document.getElementById('menu-toggle');
-
-  checkbox?.addEventListener('change', () => {
-    if (checkbox.checked) {
-      
-      document.body.classList.add('overflow-hidden'); // Si el menú se abre, bloqueamos el scroll
-    } else {
-
-      document.body.classList.remove('overflow-hidden'); // Si el menú se cierra, devolvemos el scroll
-    }
-  });
-
-</script>
-
-
-
 
