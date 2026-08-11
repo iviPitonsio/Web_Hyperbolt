@@ -1,31 +1,26 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
 import AboutMe from '../components/AboutMe.astro';
-import Work from '../components/OurWork.astro';
-import '../styles/global.css' 
-import { Icon } from 'astro-icon/components';
+import Work from '../components/OurWork.astro'; 
+import { ClientRouter } from 'astro:transitions';
 
 ---
 
 <Layout>
-<Header/>
+    <ClientRouter />
 
-<section class="h-screen relative overflow-hidden block">
+    <section class="h-screen relative overflow-hidden block">
 
-    <video class="absolute inset-0 w-full h-full object-cover" autoplay loop muted>
-        <source src="HyperboltReel_v01.mp4" type="video/mp4">
-    </video>
+        <video class="absolute inset-0 w-full h-full object-cover" autoplay loop muted>
+            <source src="HyperboltReel_v01.mp4" type="video/mp4">
+        </video>
 
-</section>
+    </section>
 
-<AboutMe/>
+    <AboutMe/>
 
-<div class="mt-25"/>
+    <div class="mt-25"/>
 
-<Work/>
-
-<Footer/>
+    <Work/>
 
 </Layout>

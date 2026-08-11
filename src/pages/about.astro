@@ -1,0 +1,171 @@
+---
+const integrantes = [
+
+    {
+        nombre: 'Iván',
+        descripcion: ' ',
+        foto: 'src/assets/HB_Color_NoBG.png'
+
+    },
+
+    {
+        nombre: 'Pedro',
+        descripcion: ' ',
+        foto: 'src/assets/HB_Color_NoBG.png'
+
+    },
+
+    {
+        nombre: 'Fer',
+        descripcion: ' ',
+        foto: 'src/assets/HB_Color_NoBG.png'
+
+    },
+
+    {
+        nombre: 'Rita',
+        descripcion: ' ',
+        foto: 'src/assets/HB_Color_NoBG.png'
+
+    },
+
+];
+
+
+import Layout from '../layouts/Layout.astro';
+ 
+---
+
+<Layout>
+    <div class="w-full max-w-[40%] md:max-w-full mx-auto px-2">
+
+        <div class="flex md:flex-row lg:flex-row flex-col md:gap-25 lg:gap-25 gap-10 mt-27 justify-center items-center text-white">
+            
+            <div class="flex flex-col gap-3 items-center">
+                <h1 id="team" style="visibility: hidden;" class="text-5xl font-bold text-center">Conoce al equipo</h1>
+                <span id="sub03" class="invisible h-1 rounded-full w-95 bg-blue-500 shadow-[0_0_12px_#87efff,0_0_12px_#87efff]"></span>
+            </div>
+
+             <div class="flex flex-col">
+                <img src="src/assets/HB_Color_NoBG.png" alt="Logo" class="md:h-80 lg:h-80 md:w-80 lg:w-80 h-40 w-40" />
+
+            </div>
+
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 mt-20 w-full justify-items-center md:gap-5 gap-50 text-white">
+
+            {integrantes.map((int) => (
+                    
+                    <div class="flex flex-col text-white md:w-75 md:h-100 w-40 h-60 rounded-2xl border border-purple-800 overflow-hidden transition-all duration-300 hover:scale-105 hover:border-cyan-500 hover:shadow-2xl shadow-cyan-500/50"
+                    style={{ background: 'linear-gradient(182deg, #e8e6e3 0%, #8FC4C4 30%, #337EA6 60%, #4F3168 70%, #1c141c 95%, #050506 100%)' }} >
+
+                        <div>
+
+                            <img src = {int.foto}
+                            class="w-full h-full object-cover object-top relative"/>
+
+                        </div>
+
+                        <div class="flex flex-col items-center p-5">
+
+                            <h3 class="font-bold items-center text-2xl">{int.nombre}</h3>
+
+                            <p class="text-justify leading-relaxed">{int.descripcion}</p>
+
+                        </div>      
+
+                    </div>
+                    
+                ))}
+
+
+        </div>
+    </div>
+</Layout>
+
+<script>
+
+import SplitType from "split-type";
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
+
+    function ejecutarAnimacion() {
+
+    let teamText = new SplitType('#team');
+    gsap.set(teamText.chars, { autoAlpha: 0 });
+    gsap.set('#team', { visibility: 'visible' });
+
+    if (teamText) teamText.revert();
+    teamText = new SplitType('#team');
+    
+    gsap.fromTo(teamText.chars, {
+        y:'0',
+        autoAlpha:0,
+        },
+        {
+        y: '-10',
+        stagger: 0.05,
+        delay: 0.2,
+        duration: 0.5,
+        ease: 'power2.out',
+        autoAlpha: 1,
+
+        scrollTrigger: {
+            trigger: "#team",
+            start: "top 100%",
+    }
+    });
+
+    gsap.from('#para', {
+        y: '100%',
+        delay: 1.0,
+        duration: 1.0,
+        ease: 'power2.out',
+        autoAlpha: 0,
+        scrollTrigger: {
+            trigger: "#text",
+            start: "bottom 95%",
+    }
+    });
+
+    gsap.from('#sub01', {
+        y: '100%',
+        delay: 1.0,
+        duration: 1.0,
+        autoAlpha: 0,
+        scrollTrigger: {
+            trigger: "#text",
+            start: "bottom 95%",
+    }
+    });
+
+    gsap.to('#button', {
+        y: '-50%',
+        delay: 3.0,
+        autoAlpha: 1,
+        ease: 'power2.out',
+        scrollTrigger: {
+            trigger: "#text",
+            start: "bottom 90%",
+    },
+    });
+
+    gsap.from('#sub03', {
+        y: '100%',
+        delay: 1.0,
+        duration: 1.0,
+        autoAlpha: 0,
+        scrollTrigger: {
+            trigger: "#projects",
+            start: "top 100%",
+    }
+    
+    });
+
+    }
+
+    document.addEventListener('astro:page-load', ejecutarAnimacion);
+
+</script>

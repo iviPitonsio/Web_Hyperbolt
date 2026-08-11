@@ -35,68 +35,69 @@ const proyectos = [
 
 
 ];
+
+import { YouTube } from 'astro-embed';
+function getYoutubeId(embedUrl: String) {
+  return embedUrl.split('/embed/')[1]?.split('?')[0] ?? '';
+}
 ---
+<div class="w-full max-w-[70%] md:max-w-full mx-auto px-2">
 
-<div class="flex flex-col items-center justify-center gap-5 mt-20 text-white leading-relaxed">
+    <div class="flex flex-col items-center justify-center gap-5 mt-20 text-white leading-relaxed">
 
-    <div class="flex flex-col gap-3 items-center">
-        <h1 id="work" class="text-5xl font-bold">Nuestro trabajo</h1>
-        <span id="sub02" class="h-1 rounded-full w-90 bg-blue-500 shadow-[0_0_12px_#87efff,0_0_12px_#87efff]"></span>
-    </div>
+        <div class="flex flex-col gap-3 items-center">
+            <h1 id="work" class="text-5xl font-bold">Nuestro trabajo</h1>
+            <span id="sub02" class="h-1 rounded-full w-90 bg-blue-700 shadow-[0_0_12px_#66b7c3,0_0_12px_#66b7c3]"></span>
+        </div>
 
-    <div id="projects" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-7xl mt-10 justify-items-center rounded-4xl z-20">
+        <div id="projects" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-8 gap-10 w-full max-w-7xl mt-10 justify-items-center rounded-4xl z-20">
 
-        {proyectos.map((pro) => (
-            
-            <div class=" text-white bg-black rounded-2xl border border-slate-800 overflow-hidden transition-all duration-300 hover:scale-105 hover:border-cyan-500 hover:shadow-2xl shadow-cyan-500/50 h-full w-full">
+            {proyectos.map((pro) => (
+                
+                <div class=" text-white  rounded-2xl border border-purple-800 overflow-hidden transition-all duration-300 hover:scale-105 hover:border-cyan-500 hover:shadow-2xl shadow-cyan-500/50 h-full w-full"
+                style={{ background: 'linear-gradient(182deg, #e8e6e3 0%, #8FC4C4 30%, #337EA6 60%, #4F3168 70%, #1c141c 95%, #050506 100%)' }} >
 
-                <iframe
+                    <YouTube
+                            id={getYoutubeId(pro.video)}
+                            class="aspect-video w-full object-cover object-top md:h-48 h-40 relative"
+                        />
 
-                    src={pro.video}
-                    class="aspect-video w-full h-full object-cover object-top md:h-48 relative"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
+                    <div class="flex flex-col items-center p-5">
 
-                <div class="flex flex-col items-center p-5">
+                        <h3 class="font-bold items-center text-2xl">{pro.titulo}</h3>
 
-                    <h3 class="font-bold items-center text-2xl">{pro.titulo}</h3>
-
-                    <div class="flex flex-row gap-3 p-5 border-red">
-
+                        <div class="flex flex-row gap-3 p-5">
                         {pro.charact.map((char) => (
-                            <div class="rounded-2xl p-2 gap-2 text-xs bg-black items-center border border-white">
-                                {char.tipo}
-                                
-                            </div>
-
-                            <div class="rounded-2xl p-2 gap-2 text-xs bg-black items-center border border-white">
-                                {char.dimensiones}
-                                
-                            </div>
-
+                            <>
+                                <div class="rounded-2xl p-2 gap-2 text-xs bg-black items-center border border-white">
+                                    {char.tipo}
+                                </div>
+                                <div class="rounded-2xl p-2 gap-2 text-xs bg-black items-center border border-white">
+                                    {char.dimensiones}
+                                </div>
+                            </>
                         ))}
-
                     </div>
 
-                    <p class="text-justify leading-relaxed">{pro.descripcion}</p>
+                        <p class="text-justify leading-relaxed">{pro.descripcion}</p>
 
-                </div>      
+                    </div>      
 
-            </div>
+                </div>
+                
+            ))}
             
-        ))}
+
+
+
+        </div>
+
         
-
-
+        <div id="button" class=" opacity-0 mt-10">
+            <a href="/allWorks" class="block text-white font-bold p-3 bg-black border border-white rounded-4xl transition-all duration-300 hover:scale-105 mt-5">Ver más</a>
+        </div>
 
     </div>
-
-    
-    <div id="button" class=" opacity-0 mt-10">
-        <a href="/descubrenos" class="block text-white font-bold p-3 bg-black border border-white rounded-4xl transition-all duration-300 hover:scale-105 mt-5">Ver más</a>
-    </div>
-
 </div>
 
 <script>
@@ -125,7 +126,7 @@ gsap.registerPlugin(ScrollTrigger);
     });
 
     gsap.from('#projects', {
-        x: '-500%',
+        x: '-200%',
         delay: 0.2,
         duration: 1.5,
         ease: 'power2.out',
