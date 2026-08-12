@@ -46,8 +46,8 @@ function getYoutubeId(embedUrl: String) {
     <div class="flex flex-col items-center justify-center gap-5 mt-20 text-white leading-relaxed">
 
         <div class="flex flex-col gap-3 items-center">
-            <h1 id="work" class="text-5xl font-bold">Nuestro trabajo</h1>
-            <span id="sub02" class="h-1 rounded-full w-90 bg-blue-700 shadow-[0_0_12px_#66b7c3,0_0_12px_#66b7c3]"></span>
+            <h1 id="work" class="md:text-5xl lg:text-5xl text-4xl font-bold">Nuestro trabajo</h1>
+            <span id="sub02" class="h-1 rounded-full md:w-90 lg:w-90 w-70 bg-blue-700 shadow-[0_0_12px_#66b7c3,0_0_12px_#66b7c3]"></span>
         </div>
 
         <div id="projects" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-8 gap-10 w-full max-w-7xl mt-10 justify-items-center rounded-4xl z-20">
@@ -55,7 +55,7 @@ function getYoutubeId(embedUrl: String) {
             {proyectos.map((pro) => (
                 
                 <div class=" text-white  rounded-2xl border border-purple-800 overflow-hidden transition-all duration-300 hover:scale-105 hover:border-cyan-500 hover:shadow-2xl shadow-cyan-500/50 h-full w-full"
-                style={{ background: 'linear-gradient(182deg, #e8e6e3 0%, #8FC4C4 30%, #337EA6 60%, #4F3168 70%, #1c141c 95%, #050506 100%)' }} >
+                style={{ background: 'linear-gradient(170deg, #e8e6e3 0%, #8FC4C4 30%, #337EA6 60%, #4F3168 70%, #1c141c 95%, #050506 100%)' }} >
 
                     <YouTube
                             id={getYoutubeId(pro.video)}
@@ -69,10 +69,10 @@ function getYoutubeId(embedUrl: String) {
                         <div class="flex flex-row gap-3 p-5">
                         {pro.charact.map((char) => (
                             <>
-                                <div class="rounded-2xl p-2 gap-2 text-xs bg-black items-center border border-white">
+                                <div class="rounded-2xl p-2 gap-2 text-xs bg-gray-800 items-center border border-white">
                                     {char.tipo}
                                 </div>
-                                <div class="rounded-2xl p-2 gap-2 text-xs bg-black items-center border border-white">
+                                <div class="rounded-2xl p-2 gap-2 text-xs bg-gray-800 items-center border border-white">
                                     {char.dimensiones}
                                 </div>
                             </>
@@ -94,7 +94,7 @@ function getYoutubeId(embedUrl: String) {
 
         
         <div id="button" class=" opacity-0 mt-10">
-            <a href="/allWorks" class="block text-white font-bold p-3 bg-black border border-white rounded-4xl transition-all duration-300 hover:scale-105 mt-5">Ver más</a>
+            <a href="/works" class="block text-white font-bold p-3 bg-black border border-white rounded-4xl transition-all duration-300 hover:scale-105 mt-5">Ver más</a>
         </div>
 
     </div>
@@ -121,7 +121,6 @@ gsap.registerPlugin(ScrollTrigger);
         scrollTrigger: {
             trigger: "#projects",
             start: "top 100%",
-            markers: true
     }
     });
 
@@ -135,7 +134,6 @@ gsap.registerPlugin(ScrollTrigger);
         scrollTrigger: {
             trigger: "#projects",
             start: "top 70%",
-            markers: true
     }
 
     });
@@ -148,7 +146,6 @@ gsap.registerPlugin(ScrollTrigger);
         scrollTrigger: {
             trigger: "#projects",
             start: "bottom 70%",
-            markers: true
         }
     });
 

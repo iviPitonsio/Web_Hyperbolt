@@ -1,0 +1,141 @@
+---
+const options = [
+{
+    titulo: 'Visualizer simple',
+    descripcion: 'Una sola escena, con un fondo sencillo, un personaje, algunos efectos, animaciones en loop, lyrics simples.',
+    precio: 'Entre 100 y 500€.',
+    tiempo: 'De 1 a 2 semanas.',
+
+    gif: "src/assets/services/frenesisi.JPG",
+    alt: 'ejemplo_visualizer_simple'
+
+},
+
+{
+    titulo: 'Visualizer complejo',
+    descripcion: 'Con loops de animación que se adapten a la canción, sincronización con la música, lyrics animados, cambios de plano y efectos.',
+    precio: 'Entre 500 y 1500€.',
+    tiempo: 'De 2 a 3 semanas.',
+
+    gif: "src/assets/services/rayquaza.gif",
+    alt: 'ejemplo_visualizer_complejo'
+
+},
+
+{
+    titulo: 'Videoclip',
+    descripcion: 'Con cambios de escena, animaciones elaboradas, efectos, lyrics integrados en la escena y animados, escenarios complejos.',
+    precio: 'A partir de 1500€',
+    tiempo: ' Más de 3 semanas.',
+
+    gif: "src/assets/services/lasVegas.gif",
+    alt: 'ejemplo_videoclip'
+
+}
+];
+
+
+
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+    <div class="w-full max-w-[70%] md:max-w-full mx-auto px-2">
+        <div class="flex flex-col items-center justify-center gap-10 mt-20 text-white leading-relaxed">
+
+            <div class="flex flex-col gap-3 mt-5 items-center">
+                <h1 id="services" class="md:text-5xl lg:text-5xl text-4xl font-bold">Nuestros servicios</h1>
+
+                <span id="sub03" class="invisible h-1 rounded-full md:w-100 lg:w-100 w-80 bg-purple-600 shadow-[0_0_12px_#d666ff,0_0_12px_#d666ff]"></span>
+            </div> 
+
+            <div id="services02" class="grid grid-cols-2 w-full h-full max-w-5xl mt-5 gap-25 items-center ">
+                
+                {options.map((op) => (
+                <div class="flex flex-col w-full items-center justify-center rounded-4xl h-50 p-5 gap-2 overflow-hidden border border-purple-800 transition-all duration-300 hover:scale-105 hover:border-cyan-500 hover:shadow-2xl shadow-cyan-500/50"
+                style={{ background: 'linear-gradient(150deg, #e8e6e3 0%, #8FC4C4 10%, #337EA6 30%, #4F3168 60%, #1c141c 95%, #050506 100%)' }} >
+                    
+                    <h2 class="font-bold text-3xl items-center"> {op.titulo} </h2>
+
+                    <ul class="list-disc list-inside text-center">
+                        <li> {op.descripcion}</li>
+                        <li>{op.precio}</li>
+                        <li>{op.tiempo}</li>
+                    </ul>
+
+                </div>
+
+                <div class="rounded-full">
+                    <img src={op.gif}
+                    alt={op.alt}>
+                </div>
+                
+                ))}
+            </div>
+
+        </div>
+    </div>
+</Layout>
+
+
+
+<script>
+
+import SplitType from "split-type";
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
+
+function ejecutarAnimacion() {
+
+    let servText = new SplitType('#services');
+
+    gsap.set(servText.chars, { autoAlpha: 0 });
+    gsap.set('#services', { visibility: 'visible' });
+
+    if (servText) servText.revert();
+    servText = new SplitType('#services');
+    
+    
+    gsap.from(servText.chars, {
+        y: '100%',
+        stagger: 0.05,
+        delay: 0.2,
+        duration: 0.5,
+        ease: 'power2.out',
+        autoAlpha: 0,
+
+        scrollTrigger: {
+            trigger: "#services",
+            start: "top 100%",
+    }
+    });
+
+    gsap.fromTo('#services02', {
+        x: '-200%'
+        },
+        {
+        x:0,
+        delay: 1.0,
+        duration: 1.5,
+        ease: 'power2.out',
+        autoAlpha: 1,
+        clearProps: 'transform'
+    });
+
+    gsap.from('#sub03', {
+        y: '100%',
+        delay: 1.0,
+        duration: 1.0,
+        autoAlpha: 0,
+        scrollTrigger: {
+            trigger: "#services",
+            start: "top 100%",
+    }
+    });
+
+    }
+
+    document.addEventListener('astro:page-load', ejecutarAnimacion);
+
+</script>

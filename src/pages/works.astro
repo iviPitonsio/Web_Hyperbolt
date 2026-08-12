@@ -93,7 +93,7 @@ function getYoutubeId(embedUrl: String) {
                 {proyectos.map((pro) => (
                     
                     <div class=" text-white rounded-2xl border border-purple-800 overflow-hidden transition-all duration-300 hover:scale-105 hover:border-cyan-500 hover:shadow-2xl shadow-cyan-500/50 h-full w-full"
-                    style={{ background: 'linear-gradient(182deg, #e8e6e3 0%, #8FC4C4 30%, #337EA6 60%, #4F3168 70%, #1c141c 95%, #050506 100%)' }} >
+                    style={{ background: 'linear-gradient(170deg, #e8e6e3 0%, #8FC4C4 30%, #337EA6 60%, #4F3168 70%, #1c141c 95%, #050506 100%)' }} >
 
                         <YouTube
                             id={getYoutubeId(pro.video)}
@@ -107,10 +107,10 @@ function getYoutubeId(embedUrl: String) {
                             <div class="flex flex-row gap-3 p-5">
                                 {pro.charact.map((char) => (
                                     <>
-                                        <div class="rounded-2xl p-2 gap-2 text-xs bg-black items-center border border-white">
+                                        <div class="rounded-2xl p-2 gap-2 text-xs bg-gray-800 items-center border border-white">
                                             {char.tipo}
                                         </div>
-                                        <div class="rounded-2xl p-2 gap-2 text-xs bg-black items-center border border-white">
+                                        <div class="rounded-2xl p-2 gap-2 text-xs bg-gray-800 items-center border border-white">
                                             {char.dimensiones}
                                         </div>
                                     </>

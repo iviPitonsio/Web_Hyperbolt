@@ -1,0 +1,67 @@
+<div class="flex flex-col items-center justify-center gap-10 mt-20 text-white leading-relaxed">
+
+    <div class="flex flex-col gap-2 items-center">
+        <h1 id="contact" class="md:text-5xl lg:text-5xl text-4xl font-bold">Contacto</h1>
+
+        <span id="sub04" class="h-1 rounded-full md:w-50 lg:w-50 w-40 bg-purple-800 shadow-[0_0_12px_#7e1ec3,0_0_12px_#7e1ec3]"></span>
+    </div>
+
+    <div id="para03">
+        <p class="text-justify md:max-w-3xl mx-auto max-w-85">
+            Puedes contactarnos por el correo que tienes aquí abajo correo o a través del siguiente formulario, ¡no te cortes y dinos lo que quieras!</p>
+    
+        <p class="text-center font-bold text-2xl mt-5 transition-all duration-300 hover:scale-105">studioshyperbolt@gmail.com</p>
+        </div>
+
+</div>
+
+<script>
+
+import SplitType from "split-type";
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
+
+    let contText = new SplitType('#contact');
+    
+    
+    gsap.from(contText.chars, {
+        y: '100%',
+        stagger: 0.05,
+        delay: 0.2,
+        duration: 0.5,
+        ease: 'power2.out',
+        autoAlpha: 0,
+
+        scrollTrigger: {
+            trigger: "#contact",
+            start: "top 85%",
+            markers: true
+    }
+    });
+
+    gsap.from('#para03', {
+        y: '100%',
+        delay: 2.0,
+        duration: 1.0,
+        ease: 'power2.out',
+        autoAlpha: 0,
+        scrollTrigger: {
+            trigger: "#contact",
+            start: "bottom 95%",
+    }
+    });
+
+    gsap.from('#sub04', {
+        y: '100%',
+        delay: 1.0,
+        duration: 1.0,
+        autoAlpha: 0,
+        scrollTrigger: {
+            trigger: "#contact",
+            start: "top 85%",
+    }
+    });
+
+
+</script>
