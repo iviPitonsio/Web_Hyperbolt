@@ -1,3 +1,7 @@
+---
+const web3formsKey = import.meta.env.PUBLIC_WEB3FORMS_KEY;
+---
+
 <div class="flex flex-col items-center justify-center gap-10 mt-20 text-white leading-relaxed">
 
     <div class="flex flex-col gap-2 items-center">
@@ -11,7 +15,33 @@
             Puedes contactarnos por el correo que tienes aquí abajo correo o a través del siguiente formulario, ¡no te cortes y dinos lo que quieras!</p>
     
         <p class="text-center font-bold text-2xl mt-5 transition-all duration-300 hover:scale-105">studioshyperbolt@gmail.com</p>
-        </div>
+        
+    </div>
+
+    <div id="form" class="flex justify-center text-white bg-black border border-white rounded-2xl w-90 p-3">
+        <form class="flex flex-col gap-2 w-md autofill:shadow-[0_0_0_1000px_#000000_inset] autofill:text-fill-white"
+
+            action="https://api.web3forms.com/submit" 
+            method="POST" 
+            id="contact-form">
+
+            <input type="hidden" name="access_key" value={web3formsKey} />
+
+            <label>Nombre y apellidos</label>
+            <input type="text" id="name" name="Nombre_y_apellidos" class="border border-white rounded-md"/>
+
+            <label>Email</label>
+            <input type="email" id="email" name="email" class="border border-white rounded-md"/>
+
+            <label>Mensaje</label>
+            <textarea name="mensaje" class="border border-white rounded-md h-40"> </textarea>
+
+            
+            <button type="submit" class="w-full h-15 cursor-pointer bg-blue-600 text-white rounded-2xl mt-3 text-center px-2 py-3 border border-blue-900 transition-all duration-300 hover:scale-105"> Enviar </button>
+
+        </form>
+        
+    </div>
 
 </div>
 
@@ -40,9 +70,21 @@ gsap.registerPlugin(ScrollTrigger);
     }
     });
 
+    gsap.fromTo('#form', {
+        x: '-300%'
+        },
+        {
+        x:0,
+        delay: 2.0,
+        duration: 1.5,
+        ease: 'power2.out',
+        autoAlpha: 1,
+        clearProps: 'transform'
+    });
+
     gsap.from('#para03', {
         y: '100%',
-        delay: 2.0,
+        delay: 1.0,
         duration: 1.0,
         ease: 'power2.out',
         autoAlpha: 0,
@@ -54,7 +96,7 @@ gsap.registerPlugin(ScrollTrigger);
 
     gsap.from('#sub04', {
         y: '100%',
-        delay: 1.0,
+        delay: 0.8,
         duration: 1.0,
         autoAlpha: 0,
         scrollTrigger: {
