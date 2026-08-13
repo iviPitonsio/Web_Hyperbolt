@@ -5,9 +5,9 @@ const web3formsKey = import.meta.env.PUBLIC_WEB3FORMS_KEY;
 <div class="flex flex-col items-center justify-center gap-10 mt-20 text-white leading-relaxed">
 
     <div class="flex flex-col gap-2 items-center">
-        <h1 id="contact" class="md:text-5xl lg:text-5xl text-4xl font-bold">Contacto</h1>
+        <h1 id="contact" class="md:text-5xl lg:text-5xl text-4xl font-bold scroll-mt-25">Contacto</h1>
 
-        <span id="sub04" class="h-1 rounded-full md:w-50 lg:w-50 w-40 bg-purple-800 shadow-[0_0_12px_#7e1ec3,0_0_12px_#7e1ec3]"></span>
+        <span id="sub06" class="h-1 rounded-full md:w-50 lg:w-50 w-40 bg-purple-800 shadow-[0_0_12px_#7e1ec3,0_0_12px_#7e1ec3]"></span>
     </div>
 
     <div id="para03">
@@ -52,6 +52,8 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
+function ejecutarAnimacion() {
+
     let contText = new SplitType('#contact');
     
     
@@ -65,8 +67,7 @@ gsap.registerPlugin(ScrollTrigger);
 
         scrollTrigger: {
             trigger: "#contact",
-            start: "top 85%",
-            markers: true
+            start: "top 100%",
     }
     });
 
@@ -75,11 +76,16 @@ gsap.registerPlugin(ScrollTrigger);
         },
         {
         x:0,
-        delay: 2.0,
+        delay: 1.0,
         duration: 1.5,
         ease: 'power2.out',
         autoAlpha: 1,
-        clearProps: 'transform'
+        clearProps: 'transform',
+        scrollTrigger: {
+            trigger: "#para03",
+            start: "bottom 100%",
+
+    }
     });
 
     gsap.from('#para03', {
@@ -90,11 +96,12 @@ gsap.registerPlugin(ScrollTrigger);
         autoAlpha: 0,
         scrollTrigger: {
             trigger: "#contact",
-            start: "bottom 95%",
+            start: "bottom 100%",
+
     }
     });
 
-    gsap.from('#sub04', {
+    gsap.from('#sub06', {
         y: '100%',
         delay: 0.8,
         duration: 1.0,
@@ -102,8 +109,18 @@ gsap.registerPlugin(ScrollTrigger);
         scrollTrigger: {
             trigger: "#contact",
             start: "top 85%",
+
     }
     });
+
+    ScrollTrigger.refresh();
+}
+
+document.addEventListener('astro:page-load', ejecutarAnimacion);
+
+document.addEventListener('astro:before-swap', () => {
+    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+});
 
 
 </script>

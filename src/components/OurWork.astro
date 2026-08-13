@@ -107,6 +107,9 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
+
+function ejecutarAnimacion() {
+
     let workText = new SplitType('#work');
     
     
@@ -158,6 +161,15 @@ gsap.registerPlugin(ScrollTrigger);
             trigger: "#projects",
             start: "top 100%",
     }
+    });
+
+    ScrollTrigger.refresh();
+    }
+
+    document.addEventListener('astro:page-load', ejecutarAnimacion);
+
+    document.addEventListener('astro:before-swap', () => {
+        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     });
 
 

@@ -46,16 +46,16 @@ import Layout from '../layouts/Layout.astro';
             <div class="flex flex-col gap-3 mt-5 items-center">
                 <h1 id="services" class="md:text-5xl lg:text-5xl text-4xl font-bold">Nuestros servicios</h1>
 
-                <span id="sub03" class="invisible h-1 rounded-full md:w-100 lg:w-100 w-80 bg-purple-600 shadow-[0_0_12px_#d666ff,0_0_12px_#d666ff]"></span>
+                <span id="sub05" class="invisible h-1 rounded-full md:w-100 lg:w-100 w-80 bg-purple-600 shadow-[0_0_12px_#d666ff,0_0_12px_#d666ff]"></span>
             </div> 
 
-            <div id="services02" class="grid grid-cols-2 w-full h-full max-w-5xl mt-5 gap-25 items-center ">
+            <div id="services02" class="grid md:grid-cols-2 grid-cols-1 w-full h-full max-w-5xl mt-5 gap-25 items-center ">
                 
                 {options.map((op) => (
-                <div class="flex flex-col w-full items-center justify-center rounded-4xl h-50 p-5 gap-2 overflow-hidden border border-purple-800 transition-all duration-300 hover:scale-105 hover:border-cyan-500 hover:shadow-2xl shadow-cyan-500/50"
+                <div class="flex flex-col w-full items-center rounded-4xl md:h-50 h-75 md:p-5 p-6 gap-2 overflow-hidden border border-purple-800 transition-all duration-300 hover:scale-105 hover:border-cyan-500 hover:shadow-2xl shadow-cyan-500/50"
                 style={{ background: 'linear-gradient(150deg, #e8e6e3 0%, #8FC4C4 10%, #337EA6 30%, #4F3168 60%, #1c141c 95%, #050506 100%)' }} >
                     
-                    <h2 class="font-bold text-3xl items-center"> {op.titulo} </h2>
+                    <h2 class="font-bold text-3xl text-center"> {op.titulo} </h2>
 
                     <ul class="list-disc list-inside text-center">
                         <li> {op.descripcion}</li>
@@ -123,7 +123,7 @@ function ejecutarAnimacion() {
         clearProps: 'transform'
     });
 
-    gsap.from('#sub03', {
+    gsap.from('#sub05', {
         y: '100%',
         delay: 1.0,
         duration: 1.0,
@@ -134,8 +134,13 @@ function ejecutarAnimacion() {
     }
     });
 
+   ScrollTrigger.refresh();
     }
 
     document.addEventListener('astro:page-load', ejecutarAnimacion);
+
+    document.addEventListener('astro:before-swap', () => {
+        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    });
 
 </script>

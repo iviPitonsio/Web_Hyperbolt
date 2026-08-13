@@ -26,8 +26,9 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
+function ejecutarAnimacion() {
+
     let servText = new SplitType('#services');
-    
     
     gsap.from(servText.chars, {
         y: '100%',
@@ -45,7 +46,7 @@ gsap.registerPlugin(ScrollTrigger);
 
     gsap.from('#para02', {
         y: '100%',
-        delay: 2.0,
+        delay: 1.0,
         duration: 1.0,
         ease: 'power2.out',
         autoAlpha: 0,
@@ -58,13 +59,14 @@ gsap.registerPlugin(ScrollTrigger);
 
     gsap.to('#buttonServices', {
         y: '-50%',
-        delay: 2.0,
+        delay: 1.5,
         autoAlpha: 1,
         ease: 'power2.out',
         scrollTrigger: {
             trigger: "#services",
             start: "bottom 70%",
         }
+        
     });
 
     gsap.from('#sub03', {
@@ -78,5 +80,13 @@ gsap.registerPlugin(ScrollTrigger);
     }
     });
 
+    ScrollTrigger.refresh();
+}
+
+document.addEventListener('astro:page-load', ejecutarAnimacion);
+
+document.addEventListener('astro:before-swap', () => {
+    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+});
 
 </script>

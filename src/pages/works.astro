@@ -85,7 +85,7 @@ function getYoutubeId(embedUrl: String) {
 
             <div class="flex flex-col gap-3 items-center mt-5">
                 <h1 id="work02" style="visibility: hidden;" class="text-5xl font-bold">Proyectos</h1>
-                <span id="sub02" class="invisible h-1 rounded-full w-55 bg-blue-700 shadow-[0_0_12px_#66b7c3,0_0_12px_#66b7c3]"></span>
+                <span id="sub04" class="invisible h-1 rounded-full w-55 bg-blue-700 shadow-[0_0_12px_#66b7c3,0_0_12px_#66b7c3]"></span>
             </div>
 
             <div id="projects02" class="invisible will-change-transform grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-7xl mt-10 justify-items-center rounded-4xl z-20">
@@ -188,7 +188,7 @@ gsap.registerPlugin(ScrollTrigger);
         }
     });
 
-    gsap.from('#sub02', {
+    gsap.from('#sub04', {
         y: '100%',
         delay: 1.0,
         duration: 1.0,
@@ -196,11 +196,16 @@ gsap.registerPlugin(ScrollTrigger);
         scrollTrigger: {
             trigger: "#projects02",
             start: "top 100%",
-    }
+        }
     });
 
+    ScrollTrigger.refresh();
     }
 
     document.addEventListener('astro:page-load', ejecutarAnimacion);
-    
+
+    document.addEventListener('astro:before-swap', () => {
+        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    });
+        
 </script>
