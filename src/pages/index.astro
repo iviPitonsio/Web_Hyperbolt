@@ -9,9 +9,9 @@ import { ClientRouter } from 'astro:transitions';
 ---
 
 <Layout>
-    <ClientRouter />
+    <ClientRouter /> <!-- Mejora del rendimiento -->
 
-    <section class="h-screen relative overflow-hidden block">
+    <section class="h-screen relative overflow-hidden block"> <!-- Bloque que contiene el video de fondo -->
 
         <video class="absolute inset-0 w-full h-full object-cover" autoplay loop muted playsinline preload="auto" poster="/poster.png">
             <source src="/HyperboltReel_v01.webm" type="video/webm">
@@ -19,16 +19,16 @@ import { ClientRouter } from 'astro:transitions';
 
     </section>
 
-    <AboutMe/>
+    <AboutMe/> <!-- Bloque de AboutMe -->
 
     <div class="mt-25"/>
 
-    <Work/>
+    <Work/> <!-- Bloque de trabajos -->
     
     <div class="mt-25"/>
     
-    <Services/>
+    <Services/> <!-- Bloque de servicios -->
 
-    <Contact/>
+    <Contact/> <!-- Bloque de contacto -->
 
 </Layout>

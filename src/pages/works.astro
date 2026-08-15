@@ -1,9 +1,9 @@
 ---
-const proyectos = [
+const proyectos = [ // Creamos un array con todos los proyectos hechos y su informacion
   {
     titulo: 'Las Vegas',
     descripcion: 'Videoclip para el artista Acereda en el que mezclamos el 2D y el 3D con una ambientación basada en un casino de Las Vegas.',
-    video: 'https://www.youtube.com/embed/C3Ia4-RBNl4', 
+    videoID: 'C3Ia4-RBNl4', // Se añade el ID del video de Youtube en lugar del enlace, para que el componente YouTube funcione bien
 
     charact: [
 		{tipo: 'Videoclip', dimensiones: '2D y 3D' },
@@ -14,7 +14,7 @@ const proyectos = [
   {
     titulo: 'Hazte con Todos',
     descripcion: 'Videoclip para el artista Aledial en el que buscamos acompañar su tema con una ambientación especial y macarra.',
-    video: 'https://youtube.com/embed/nW2h6YLNPEc', 
+    videoID: 'nW2h6YLNPEc', 
 
     charact: [
 		{tipo: 'Videoclip', dimensiones: '3D' },
@@ -25,7 +25,7 @@ const proyectos = [
   {
     titulo: 'Nadie Más',
     descripcion: 'Videoclip para el artista Acereda donde quisimos celebrar su último tema con una pequeña historia.',
-    video: 'https://youtube.com/embed/GOZ-Spw9gg4', 
+    videoID: 'GOZ-Spw9gg4', 
 
     charact: [
 		{tipo: 'Videoclip', dimensiones: '2D' },
@@ -36,7 +36,7 @@ const proyectos = [
   {
     titulo: 'Hiperrayo',
     descripcion: 'Visualizer para el artista Aledial, protagonizado por el Pokémon Rayquaza.',
-    video: 'https://youtube.com/embed/TllD0b8ze0E', 
+    videoID: 'TllD0b8ze0E', 
 
     charact: [
 		{tipo: 'Visualizer', dimensiones: '3D' },
@@ -47,7 +47,7 @@ const proyectos = [
   {
     titulo: 'HeartGold',
     descripcion: 'Videoclip para el artista Aledial, en el que un caballero con un corazón de oro reflexiona sobre el amor.',
-    video: 'https://youtube.com/embed/s9DY0UrtAmo', 
+    videoID: 's9DY0UrtAmo', 
 
     charact: [
 		{tipo: 'Videoclip', dimensiones: '3D' },
@@ -58,7 +58,7 @@ const proyectos = [
   {
     titulo: 'Dialga',
     descripcion: 'Videoclip para el artista Aledial, en el que un caballero protege lo más importante.',
-    video: 'https://youtube.com/embed/nQVFfnrnzGA', 
+    videoID: 'nQVFfnrnzGA', 
 
     charact: [
 		{tipo: 'Videoclip', dimensiones: '3D' },
@@ -72,52 +72,68 @@ const proyectos = [
 import Layout from '../layouts/Layout.astro';
 import { YouTube } from 'astro-embed';
 
-
-function getYoutubeId(embedUrl: String) {
-  return embedUrl.split('/embed/')[1]?.split('?')[0] ?? '';
-}
 ---
 
 <Layout>
-    <div class="w-full max-w-[70%] md:max-w-full mx-auto px-2">
+    <div class="w-full max-w-[70%] md:max-w-full mx-auto px-2"> <!-- Envolvemos todo el contenido en un contenedor que reducira el tamaño de todo para adpatarlo a movil -->
 
         <div class="flex flex-col items-center justify-center gap-5 mt-20 text-white leading-relaxed">
 
-            <div class="flex flex-col gap-3 items-center mt-5">
-                <h1 id="work02" style="visibility: hidden;" class="text-5xl font-bold">Proyectos</h1>
-                <span id="sub04" class="invisible h-1 rounded-full w-55 bg-blue-700 shadow-[0_0_12px_#66b7c3,0_0_12px_#66b7c3]"></span>
+            <div class="flex flex-col gap-3 items-center mt-5"> <!-- Contenedor del primer titulo -->
+                <h1 style="visibility: hidden;" class="anim-title text-5xl font-bold text-center" data-trigger="immediate"> Nuestra Demoreel</h1>
+                <span class="anim-color-bar invisible h-1 rounded-full md:w-100 lg:100 w-55 bg-blue-700 shadow-[0_0_12px_#66b7c3,0_0_12px_#66b7c3]" data-trigger="immediate"
+                ></span>
+
             </div>
 
-            <div id="projects02" class="invisible will-change-transform grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-7xl mt-10 justify-items-center rounded-4xl z-20">
+            <div class="anim-project-card invisible h-full w-full max-w-2xl mt-10 justify-items-center z-20" data-trigger="immediate"> <!-- Contenedor de la demo reel -->
 
-                {proyectos.map((pro) => (
+                <YouTube
+                    id={'QLmRJXFZDJs'} 
+                    class="aspect-video w-full object-cover object-top h-full relative transition-all duration-300 rounded-2xl border border-purple-800 overflow-hidden hover:scale-105 hover:border-cyan-500 hover:shadow-2xl shadow-cyan-500/50"
+                />
+                
+            </div>
+
+            <div class="flex flex-col gap-3 items-center mt-20">
+                <h1 style="visibility: hidden;" class="anim-title text-5xl font-bold" data-trigger="scroll">Proyectos</h1>
+                <span class="anim-color-bar invisible h-1 rounded-full w-55 bg-blue-700 shadow-[0_0_12px_#66b7c3,0_0_12px_#66b7c3]" 
+                data-trigger="scroll"></span>
+            </div>
+
+            <!-- Contenedor para todos los proyectos -->
+            <div class="anim-project-card invisible will-change-transform grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-7xl mt-10 justify-items-center rounded-4xl z-20"
+            data-trigger="scroll">
+
+                {proyectos.map((pro) => ( // Recorremos el array de proyectos y mostramos toda la información 
                     
                     <div class=" text-white rounded-2xl border border-purple-800 overflow-hidden transition-all duration-300 hover:scale-105 hover:border-cyan-500 hover:shadow-2xl shadow-cyan-500/50 h-full w-full"
                     style={{ background: 'linear-gradient(170deg, #e8e6e3 0%, #8FC4C4 30%, #337EA6 60%, #4F3168 70%, #1c141c 95%, #050506 100%)' }} >
 
+                        <!-- Colocamos el video -->
                         <YouTube
-                            id={getYoutubeId(pro.video)}
+                            id={pro.videoID} 
                             class="aspect-video w-full object-cover object-top md:h-48 h-40 relative"
                         />
 
                         <div class="flex flex-col items-center p-5">
 
-                            <h3 class="font-bold items-center text-2xl">{pro.titulo}</h3>
+                            <h3 class="font-bold items-center text-2xl">{pro.titulo}</h3> <!-- Titulo -->
 
-                            <div class="flex flex-row gap-3 p-5">
+                            <div class="flex flex-row gap-3 p-5"> <!-- Caracteristicas -->
                                 {pro.charact.map((char) => (
-                                    <>
+
                                         <div class="rounded-2xl p-2 gap-2 text-xs bg-gray-800 items-center border border-white">
                                             {char.tipo}
                                         </div>
                                         <div class="rounded-2xl p-2 gap-2 text-xs bg-gray-800 items-center border border-white">
                                             {char.dimensiones}
                                         </div>
-                                    </>
+                                
                                 ))}
                             </div>
 
-                            <p class="text-justify leading-relaxed">{pro.descripcion}</p>
+                            <p class="text-justify leading-relaxed">{pro.descripcion}</p> <!-- Descripcion -->
 
                         </div>      
 
@@ -132,80 +148,6 @@ function getYoutubeId(embedUrl: String) {
 
 <script>
 
-import SplitType from "split-type";
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-gsap.registerPlugin(ScrollTrigger);
-
-    function ejecutarAnimacion() {
-
-    let workText = new SplitType('#work02');
-    gsap.set(workText.chars, { autoAlpha: 0 });
-    gsap.set('#work02', { visibility: 'visible' });
-
-    if (workText) workText.revert();
-    workText = new SplitType('#work02');
-
-
-    gsap.fromTo(workText.chars, {
-        y:'0',
-        autoAlpha:0,
-        },
-        {
-        y: '-10',
-        stagger: 0.05,
-        delay: 0.2,
-        duration: 0.5,
-        ease: 'power2.out',
-        autoAlpha: 1,
-
-        scrollTrigger: {
-            trigger: "#projects02",
-            start: "top 100%",
-    }
-    });
-
-    gsap.fromTo('#projects02', {
-        x: '-200%'
-        },
-        {
-        x:0,
-        delay: 1.0,
-        duration: 1.5,
-        ease: 'power2.out',
-        autoAlpha: 1,
-        clearProps: 'transform'
-    });
-
-    gsap.to('#buttonWork', {
-        y: '-50%',
-        delay: 5.0,
-        autoAlpha: 1,
-        ease: 'power2.out',
-        scrollTrigger: {
-            trigger: "#projects02",
-            start: "bottom 70%",
-        }
-    });
-
-    gsap.from('#sub04', {
-        y: '100%',
-        delay: 1.0,
-        duration: 1.0,
-        autoAlpha: 0,
-        scrollTrigger: {
-            trigger: "#projects02",
-            start: "top 100%",
-        }
-    });
-
-    ScrollTrigger.refresh();
-    }
-
-    document.addEventListener('astro:page-load', ejecutarAnimacion);
-
-    document.addEventListener('astro:before-swap', () => {
-        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    });
+    import '../scripts/animaciones.js';
         
 </script>

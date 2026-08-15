@@ -1,19 +1,22 @@
-<div class="flex flex-col items-center justify-center gap-10 mt-10 text-white leading-relaxed">
+<div class="flex flex-col items-center justify-center gap-10 mt-10 text-white leading-relaxed"> <!-- Bloque para los servicios -->
 
     <div class="flex flex-col gap-2 items-center">
-        <h1 id="services" class="md:text-5xl lg:text-5xl text-3xl font-bold">Nuestros servicios</h1>
+        <h1 class="anim-title md:text-5xl lg:text-5xl text-3xl font-bold" data-trigger="scroll">Nuestros servicios</h1> <!-- Bloque del titulo -->
 
-        <span id="sub03" class="h-1 rounded-full md:w-100 lg:w-100 w-65 bg-purple-600 shadow-[0_0_12px_#d666ff,0_0_12px_#d666ff]"></span>
+        <span class="anim-color-bar h-1 rounded-full md:w-100 lg:w-100 w-65 bg-purple-600 shadow-[0_0_12px_#d666ff,0_0_12px_#d666ff]" 
+        data-trigger="scroll"></span> <!-- Bloque del separador -->
+
     </div>
 
-    <div>
-        <p id="para02" class="text-justify md:max-w-3xl mx-auto max-w-65">
+    <div> <!-- Contenedor del texto -->
+        <p class="anim-texts text-justify md:max-w-3xl mx-auto max-w-65" data-trigger="scroll">
             Si tienes alguna idea y te interesa llevarla a cabo, ¡puedes echar un vistazo al botón de aquí abajo para ver los tipos de
             servicio que ofrecemos! </p>
     </div>
 
-    <div id="buttonServices" class="opacity-0 mt-2">
-        <a href="/services" class="block text-white font-bold p-3 bg-black border border-white rounded-4xl transition-all duration-300 hover:scale-105 mt-5">
+    <div class="anim-button opacity-0 mt-2">
+        <a href="/services" class="block text-white font-bold p-3 bg-black border border-white rounded-4xl transition-all duration-300 hover:scale-105 mt-5"
+        data-trigger="scroll">
             Servicios</a>
     </div>
 
@@ -21,72 +24,6 @@
 
 <script>
 
-import SplitType from "split-type";
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-gsap.registerPlugin(ScrollTrigger);
-
-function ejecutarAnimacion() {
-
-    let servText = new SplitType('#services');
-    
-    gsap.from(servText.chars, {
-        y: '100%',
-        stagger: 0.05,
-        delay: 0.2,
-        duration: 0.5,
-        ease: 'power2.out',
-        autoAlpha: 0,
-
-        scrollTrigger: {
-            trigger: "#services",
-            start: "top 100%",
-    }
-    });
-
-    gsap.from('#para02', {
-        y: '100%',
-        delay: 1.0,
-        duration: 1.0,
-        ease: 'power2.out',
-        autoAlpha: 0,
-        scrollTrigger: {
-            trigger: "#services",
-            start: "bottom 95%",
-    }
-    });
-
-
-    gsap.to('#buttonServices', {
-        y: '-50%',
-        delay: 1.5,
-        autoAlpha: 1,
-        ease: 'power2.out',
-        scrollTrigger: {
-            trigger: "#services",
-            start: "bottom 70%",
-        }
-        
-    });
-
-    gsap.from('#sub03', {
-        y: '100%',
-        delay: 1.0,
-        duration: 1.0,
-        autoAlpha: 0,
-        scrollTrigger: {
-            trigger: "#services",
-            start: "top 100%",
-    }
-    });
-
-    ScrollTrigger.refresh();
-}
-
-document.addEventListener('astro:page-load', ejecutarAnimacion);
-
-document.addEventListener('astro:before-swap', () => {
-    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-});
+import '../scripts/animaciones.js'; // Importamos las animaciones de textos
 
 </script>

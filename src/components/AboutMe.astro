@@ -1,15 +1,15 @@
-<div class="flex flex-col items-center justify-center gap-10 mt-10 text-white leading-relaxed">
+<div class="flex flex-col items-center justify-center gap-10 mt-10 text-white leading-relaxed"> <!-- Contenedor del titulo, texto y boton -->
 
     <div class="flex flex-col gap-2 items-center">
-        <h1 id="text" class="md:text-5xl lg:text-5xl text-4xl font-bold">Sobre nosotros</h1>
+        <h1 class="anim-title md:text-5xl lg:text-5xl text-4xl font-bold" data-trigger="scroll">Sobre nosotros</h1> <!-- Elemento de tipo titulo que solo aparecera al hacer scroll -->
 
-        <span id="sub01" class="h-1 rounded-full md:w-85 lg:w-85 w-65 bg-blue-500 shadow-[0_0_12px_#87efff,0_0_12px_#87efff]"></span>
+        <span class="anim-color-bar h-1 rounded-full md:w-85 lg:w-85 w-65 bg-blue-500 shadow-[0_0_12px_#87efff,0_0_12px_#87efff]" data-trigger="scroll"></span> <!-- Separador que solo aparecera al hacer scroll -->
     </div>
 
-    <p id="paragraph" class="text-justify md:max-w-3xl mx-auto max-w-65"> 
+    <p class="anim-texts text-justify md:max-w-3xl mx-auto max-w-65" data-trigger="scroll"> <!-- Elemento de tipo texto que solo aparecera al hacer scroll -->
        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
-    <div id="button" class=" opacity-0 mt-2">
+    <div class="anim-button opacity-0 mt-2" data-trigger="scroll"> <!-- Elemento de tipo boton que solo aparecera al hacer scroll -->
         <a href="/about" class="block text-white font-bold p-3 bg-black border border-white rounded-4xl transition-all duration-300 hover:scale-105 mt-5">¡Conoce al equipo!</a>
     </div>
 
@@ -17,68 +17,6 @@
 
 <script>
 
-import SplitType from "split-type";
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-gsap.registerPlugin(ScrollTrigger);
-
-
-function ejecutarAnimacion() {
-
-    let text = new SplitType('#text');
-    
-    
-    gsap.from('.char', {
-        y: '100%',
-        stagger: 0.05,
-        delay: 0.2,
-        duration: 0.5,
-        ease: 'power2.out',
-        autoAlpha: 0,
-
-        scrollTrigger: {
-            trigger: "#text",
-            start: "bottom 105%",
-    }
-    });
-
-    gsap.from('#paragraph', {
-        y: '100%',
-        delay: 1.0,
-        duration: 1.0,
-        ease: 'power2.out',
-        autoAlpha: 0,
-        scrollTrigger: {
-            trigger: "#text",
-            start: "bottom 95%",
-    }
-    });
-
-    gsap.from('#sub01', {
-        y: '100%',
-        delay: 1.0,
-        duration: 1.0,
-        autoAlpha: 0,
-        scrollTrigger: {
-            trigger: "#text",
-            start: "bottom 95%",
-    }
-    });
-
-    gsap.to('#button', {
-        y: '-50%',
-        delay: 2.0,
-        autoAlpha: 1,
-        ease: 'power2.out',
-        scrollTrigger: {
-            trigger: "#text",
-            start: "bottom 90%",
-    }
-    });
-
-    ScrollTrigger.refresh();
-    }
-
-    document.addEventListener('astro:page-load', ejecutarAnimacion);
+import '../scripts/animaciones.js'; // Importamos las animaciones de textos
 
 </script>

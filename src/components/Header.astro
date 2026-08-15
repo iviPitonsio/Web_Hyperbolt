@@ -1,6 +1,5 @@
 ---
 import '../styles/global.css' 
-import { Icon } from 'astro-icon/components';
 import Menu from '../components/Menu.astro';
 import { Image } from 'astro:assets';
 import logo from '../assets/HB_Color_NoBG.png';
@@ -12,11 +11,11 @@ import logo from '../assets/HB_Color_NoBG.png';
 
     <div class="lg:hidden xl:hidden 2xl:hidden ml-5">
 
-            <div class="flex flex-row">
+            <div class="flex flex-row"> <!-- Contenedor del menu hamburguesa (solo para movil)-->
                 
                 <input type="checkbox" id="menu-toggle" class="peer hidden"/>
                 
-                <label for="menu-toggle" class="flex flex-col gap-1 cursor-pointer z-50"> <!-- Hamburger menu -->
+                <label for="menu-toggle" class="flex flex-col gap-1 cursor-pointer z-50"> <!-- Estructura -->
                     <span class="w-6 h-0.5 bg-white"></span>
                     <span class="w-6 h-0.5 bg-white"></span>
                     <span class="w-6 h-0.5 bg-white"></span>
@@ -26,7 +25,7 @@ import logo from '../assets/HB_Color_NoBG.png';
 
                 <div class="hidden peer-checked:flex flex-col bg-[color-mix(in_srgb,var(--color-black)_70%,transparent)] font-bold text-2xl text-white fixed inset-0 items-center justify-center gap-6 z-40">
     
-                    <Menu/>
+                    <Menu/> <!-- Metemos todos los enlaces de la pagina en el menu hamburguesa -->
                 
                 </div>
             
@@ -34,7 +33,7 @@ import logo from '../assets/HB_Color_NoBG.png';
             
         </div>
 
-    <div class="flex flex-row px-4 items-center gap-3 bg-black shadow-md ">
+    <div class="flex flex-row px-4 items-center gap-3 bg-black shadow-md "> <!-- Contenedor para el logo y el nombre -->
         
         <div class="flex flex-row gap-3 items-center shrink-0">
             <Image src={logo} alt="Logo" class="h-12 w-12" loading="eager" fetchpriority="high" />
@@ -45,7 +44,7 @@ import logo from '../assets/HB_Color_NoBG.png';
 
             <div class="flex flex-row items-center gap-8">
                 
-                <Menu/>
+                <Menu/> <!-- Metemos todos los enlaces de la pagina -->
             
             </div>
         

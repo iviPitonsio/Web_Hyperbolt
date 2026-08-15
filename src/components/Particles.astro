@@ -1,4 +1,4 @@
-<div id="particle-container">
+<div id="particle-container"> <!-- Creamos todas las particulas --> 
 	<div class="particle"></div>
 	<div class="particle"></div>
 	<div class="particle"></div>
@@ -33,24 +33,26 @@
 
 
 <script>
-    function randomNumber(min: number, max: number) {
+    function randomNumber(min: number, max: number) { // Funcion para randomizar su trayectoria
         return Math.random() * (max - min) + min;
     }
 
-    const particles = document.querySelectorAll<HTMLElement>('.particle');
-    const colors = ["#00A5FF", "#6800FF"];
+    const particles = document.querySelectorAll<HTMLElement>('.particle'); // Seleccionamos todos los elementos con la clase 'particle'
+    const colors = ["#00A5FF", "#6800FF"]; // Guardamos los 2 tipos de colores que pueden tener
 
-    particles.forEach((particle) => {
+    particles.forEach((particle) => { // Recorremos todas las particulas que existen
 
-        const startX = randomNumber(0,100);
+        const startX = randomNumber(0,100); // Comienzo
         const startY = randomNumber(0,100);
 
-        const endX = randomNumber(0,100);
+        const endX = randomNumber(0,100); // Final
         const endY = randomNumber(0,100);
 
-        const delay = randomNumber(-20, 0);
+        const delay = randomNumber(-20, 0); // Tiempo de aparicion
 
-        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        const randomColor = colors[Math.floor(Math.random() * colors.length)]; // Color que tendran
+
+		// Seteamos todas sus propiedades abajo
 
         particle.style.setProperty('--startX', `${startX}vw`);
         particle.style.setProperty('--startY', `${startY}vh`);
