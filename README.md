@@ -1,46 +1,61 @@
-# Astro Starter Kit: Basics
+HYPERBOLT STUDIO - Web Portfolio
+================================
 
-```sh
-npm create astro@latest -- --template basics
-```
+Sitio web oficial de Hyperbolt Studio, un equipo de animación 
+especializado en videoclips musicales y visualizers. La web es un
+portfolio interactivo donde se muestran los trabajos del estudio, los
+servicios ofrecidos y un formulario de contacto.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+El proyecto está construido con Astro y estilizado con Tailwind CSS, con
+animaciones de scroll creadas con GSAP y fundamentadas en un diseño oscuro
+con partículas de fondo y transiciones fluidas entre páginas.
 
-## 🚀 Project Structure
+CARACTERÍSTICAS
+---------------
+- Página de inicio con reel de fondo a pantalla completa (video).
+- Sección "About me": presentación del equipo.
+- Portafolio de proyectos con videos integrados de YouTube (astro-embed).
+- Demoreel con reproducción de video integrada.
+- Página de servicios, incluyendo precio y tiempo estimado.
+- Formulario de contacto funcional mediante Web3Forms.
+- Animaciones de scroll (títulos, textos, tarjetas, botones) con GSAP y
+  ScrollTrigger.
+- Efecto de partículas flotantes en el fondo.
+- Menú de navegación responsive con menú hamburguesa en móvil.
+- Enlaces a redes sociales: YouTube, Instagram, TikTok y LinkedIn.
 
-Inside of your Astro project, you'll see the following folders and files:
+TECNOLOGÍAS
+-----------
+- Astro 7
+- Tailwind CSS 4
+- JavaScript
+- GSAP (con ScrollTrigger) + SplitType
+- astro-embed (YouTube)
+- Web3Forms (contacto por email)
 
-```text
+ESTRUCTURA DEL PROYECTO
+-----------------------
 /
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
+├── public/               # Recursos estáticos (video reel, imágenes, gifs)
+├── src/
+│   ├── components/       # Componentes Astro (Header, Menu, Footer, etc.)
+│   ├── layouts/          # Layout principal de la web
+│   ├── pages/            # Páginas: index, about, works, services
+│   ├── scripts/          # Lógica de animaciones (GSAP)
+│   └── styles/           # Estilos globales
+├── astro.config.mjs      # Configuración de Astro
 └── package.json
-```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
 
-## 🧞 Commands
+CONFIGURACIÓN
+-------------
+La web necesita una variable de entorno para el formulario de contacto.
+Crea un archivo .env en la raíz del proyecto con:
 
-All commands are run from the root of the project, from a terminal:
+    PUBLIC_WEB3FORMS_KEY=tu_clave_de_web3forms
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+Para obtener una clave, regístrate en https://web3forms.com
 
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+LICENCIA
+--------
+© Hyperbolt Studio - Todos los derechos reservados.
