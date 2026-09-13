@@ -5,22 +5,22 @@ const web3formsKey = import.meta.env.PUBLIC_WEB3FORMS_KEY; // Importamos la clav
 <div class="flex flex-col items-center justify-center gap-10 mt-25 text-white leading-relaxed"> <!-- Bloque que contiene el titulo, la linea, el texto y el formulario -->
 
     <div class="flex flex-col gap-2 items-center">
-        <h1 id="contact" class="anim-title md:text-5xl lg:text-5xl text-4xl font-bold scroll-mt-25" data-trigger="scroll">Contacto</h1> <!-- Titulo -->
+        <h1 id="contact" class="anim-title md:text-5xl lg:text-5xl text-3xl font-bold scroll-mt-25" data-trigger="scroll">Contacto</h1> <!-- Titulo -->
 
-        <span class="anim-color-bar h-1 rounded-full md:w-50 lg:w-50 w-40 bg-purple-800 shadow-[0_0_12px_#7e1ec3,0_0_12px_#7e1ec3]"
+        <span class="anim-color-bar h-1 rounded-full md:w-50 lg:w-50 w-30 bg-purple-800 shadow-[0_0_12px_#7e1ec3,0_0_12px_#7e1ec3]"
         data-trigger="scroll"></span> <!-- Separador -->
     </div>
 
     <div class="anim-texts" data-trigger="scroll"> <!-- Parrafo -->
-        <p class="text-justify md:max-w-3xl mx-auto max-w-65">
+        <p class="text-justify px-15 md:px-30 lg:px-75 mx-auto">
             Puedes contactarnos por el correo que tienes aquí abajo correo o a través del siguiente formulario, ¡no te cortes y dinos lo que quieras!</p>
     
-        <p class="text-center font-bold md:text-2xl lg:text-2xl text-xl mt-5 transition-all duration-300 hover:scale-105">studioshyperbolt@gmail.com</p>
+        <p class="text-center font-bold md:text-2xl lg:text-2xl text-base mt-5 transition-all duration-300 hover:scale-105">studioshyperbolt@gmail.com</p>
         
     </div>
 
     <!-- Formulario -->
-    <div class="anim-form flex justify-center text-white bg-black border border-white rounded-2xl md:w-90 lg:w-90 w-70 p-3" data-trigger="scroll"> <!-- Bloque del formulario -->
+    <div class="anim-form flex justify-center text-white bg-black border border-white rounded-2xl md:w-90 lg:w-90 md:max-w-80 lg:max-w-80 max-w-60 p-3" data-trigger="scroll"> <!-- Bloque del formulario -->
         <form class="flex flex-col gap-2 w-md autofill:shadow-[0_0_0_1000px_#000000_inset] autofill:text-fill-white"
 
             action="https://api.web3forms.com/submit" 

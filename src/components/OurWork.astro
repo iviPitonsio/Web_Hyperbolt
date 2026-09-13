@@ -6,7 +6,7 @@ const proyectos = [ // Array con todos los datos de los proyectos clave
     videoID: 'C3Ia4-RBNl4', 
 
     charact: [
-		{tipo: 'Videoclip', dimensiones: '2D y 3D' },
+		{tipo: 'Videoclip', dimensiones: '2D, 3D' },
   	],
     
   },
@@ -42,12 +42,12 @@ import { YouTube } from 'astro-embed';
 
 <div class="w-full max-w-[70%] md:max-w-full mx-auto px-2"> <!-- Contenedor que ajusta el tamaño para moviles -->
 
-    <div class="flex flex-col items-center justify-center gap-5 mt-20 text-white leading-relaxed"> <!-- Contenedor para la seccion -->
+    <div class="flex flex-col items-center justify-center gap-5 mt-25 text-white leading-relaxed"> <!-- Contenedor para la seccion -->
 
         <div class="flex flex-col gap-3 items-center">
             
-            <h1 class="anim-title md:text-5xl lg:text-5xl text-4xl font-bold" data-trigger="scroll">Nuestro trabajo</h1>
-            <span class="anim-color-bar h-1 rounded-full md:w-90 lg:w-90 w-70 bg-blue-700 shadow-[0_0_12px_#66b7c3,0_0_12px_#66b7c3]" 
+            <h1 class="anim-title md:text-5xl lg:text-5xl text-3xl font-bold" data-trigger="scroll">Nuestro trabajo</h1>
+            <span class="anim-color-bar h-1 rounded-full md:w-90 lg:w-90 w-55 bg-blue-700 shadow-[0_0_12px_#66b7c3,0_0_12px_#66b7c3]" 
             data-trigger="scroll"></span>
 
         </div>
@@ -63,14 +63,14 @@ import { YouTube } from 'astro-embed';
 
                     <YouTube
                             id={pro.videoID}
-                            class="aspect-video w-full object-cover object-top md:h-48 h-40 relative"
+                            class="w-full h-auto object-contain relative"
                         />
 
                     <div class="flex flex-col items-center p-5">
 
-                        <h3 class="font-bold items-center text-2xl">{pro.titulo}</h3>
+                        <h3 class="font-bold items-center text-center text-2xl">{pro.titulo}</h3>
 
-                        <div class="flex flex-row gap-3 p-5">
+                        <div class="flex flex-row gap-3 p-5 items-center justify-center">
                         {pro.charact.map((char) => (
                             <>
                                 <div class="rounded-2xl p-2 gap-2 text-xs bg-gray-800 items-center border border-white">

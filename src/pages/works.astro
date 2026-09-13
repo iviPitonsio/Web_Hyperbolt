@@ -6,7 +6,7 @@ const proyectos = [ // Creamos un array con todos los proyectos hechos y su info
     videoID: 'C3Ia4-RBNl4', // Se añade el ID del video de Youtube en lugar del enlace, para que el componente YouTube funcione bien
 
     charact: [
-		{tipo: 'Videoclip', dimensiones: '2D y 3D' },
+		{tipo: 'Videoclip', dimensiones: '2D, 3D' },
   	],
     
   },
@@ -80,8 +80,8 @@ import { YouTube } from 'astro-embed';
         <div class="flex flex-col items-center justify-center gap-5 mt-20 text-white leading-relaxed">
 
             <div class="flex flex-col gap-3 items-center mt-5"> <!-- Contenedor del primer titulo -->
-                <h1 style="visibility: hidden;" class="anim-title text-5xl font-bold text-center" data-trigger="immediate"> Nuestra Demoreel</h1>
-                <span class="anim-color-bar invisible h-1 rounded-full md:w-100 lg:100 w-55 bg-blue-700 shadow-[0_0_12px_#66b7c3,0_0_12px_#66b7c3]" data-trigger="immediate"
+                <h1 style="visibility: hidden;" class="anim-title md:text-5xl lg:text-5xl text-3xl font-bold text-center" data-trigger="immediate"> Nuestra Demoreel</h1>
+                <span class="anim-color-bar invisible h-1 rounded-full md:w-100 lg:100 lg:w-100 w-60 bg-blue-700 shadow-[0_0_12px_#66b7c3,0_0_12px_#66b7c3]" data-trigger="immediate"
                 ></span>
 
             </div>
@@ -96,8 +96,8 @@ import { YouTube } from 'astro-embed';
             </div>
 
             <div class="flex flex-col gap-3 items-center mt-20">
-                <h1 style="visibility: hidden;" class="anim-title text-5xl font-bold" data-trigger="scroll">Proyectos</h1>
-                <span class="anim-color-bar invisible h-1 rounded-full w-55 bg-blue-700 shadow-[0_0_12px_#66b7c3,0_0_12px_#66b7c3]" 
+                <h1 style="visibility: hidden;" class="anim-title md:text-5xl lg:text-5xl text-3xl font-bold" data-trigger="scroll">Proyectos</h1>
+                <span class="anim-color-bar invisible h-1 rounded-full md:w-60 lg:60 w-35 bg-blue-700 shadow-[0_0_12px_#66b7c3,0_0_12px_#66b7c3]" 
                 data-trigger="scroll"></span>
             </div>
 
@@ -113,14 +113,14 @@ import { YouTube } from 'astro-embed';
                         <!-- Colocamos el video -->
                         <YouTube
                             id={pro.videoID} 
-                            class="aspect-video w-full object-cover object-top md:h-48 h-40 relative"
+                            class="w-full h-auto object-contain relative"
                         />
 
                         <div class="flex flex-col items-center p-5">
 
-                            <h3 class="font-bold items-center text-2xl">{pro.titulo}</h3> <!-- Titulo -->
+                            <h3 class="font-bold items-center text-center text-2xl">{pro.titulo}</h3> <!-- Titulo -->
 
-                            <div class="flex flex-row gap-3 p-5"> <!-- Caracteristicas -->
+                            <div class="flex flex-row gap-3 p-5 justify-center items-center"> <!-- Caracteristicas -->
                                 {pro.charact.map((char) => (
 
                                         <div class="rounded-2xl p-2 gap-2 text-xs bg-gray-800 items-center border border-white">

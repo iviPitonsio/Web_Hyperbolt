@@ -3,7 +3,24 @@
 body{
     margin:0;
     background-color: black;
+    font-family: 'Valve', sans-serif;
 }
+
+h1, h2{
+    font-family: 'Coffee', sans-serif;
+}
+
+
+@font-face {
+    font-family: 'Valve';
+    src: url(../fonts/Involve-Bold.otf);
+}
+
+@font-face{
+    font-family: 'Coffee';
+    src: url(../fonts/WantCoffee.otf);
+}
+
 
 #particle-container {
     position: fixed;

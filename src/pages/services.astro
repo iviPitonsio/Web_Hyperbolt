@@ -44,9 +44,9 @@ import Layout from '../layouts/Layout.astro';
         <div class="flex flex-col items-center justify-center gap-10 mt-20 text-white leading-relaxed">
 
             <div class="flex flex-col gap-3 mt-5 items-center"> <!-- Titulo -->
-                <h1 class="anim-title md:text-5xl lg:text-5xl text-4xl font-bold" data-trigger="immediate">Nuestros servicios</h1>
+                <h1 class="anim-title md:text-5xl lg:text-5xl text-3xl font-bold" data-trigger="immediate">Nuestros servicios</h1>
 
-                <span class="anim-color-bar invisible h-1 rounded-full md:w-100 lg:w-100 w-80 bg-purple-600 shadow-[0_0_12px_#d666ff,0_0_12px_#d666ff]" 
+                <span class="anim-color-bar invisible h-1 rounded-full md:w-100 lg:w-100 w-60 bg-purple-600 shadow-[0_0_12px_#d666ff,0_0_12px_#d666ff]" 
                 data-trigger="immediate"></span>
 
             </div> 
@@ -55,12 +55,12 @@ import Layout from '../layouts/Layout.astro';
             data-trigger="immediate"> <!-- Descripciones y gifs -->
                 
                 {options.map((op) => (
-                <div class="flex flex-col w-full items-center rounded-4xl md:h-50 h-75 md:p-5 p-6 gap-2 overflow-hidden border border-purple-800 transition-all duration-300 hover:scale-105 hover:border-cyan-500 hover:shadow-2xl shadow-cyan-500/50"
+                <div class="flex flex-col w-full items-center rounded-4xl md:p-5 p-6 gap-2 border border-purple-800 transition-all duration-300 hover:scale-105 hover:border-cyan-500 hover:shadow-2xl shadow-cyan-500/50"
                 style={{ background: 'linear-gradient(150deg, #e8e6e3 0%, #8FC4C4 10%, #337EA6 30%, #4F3168 60%, #1c141c 95%, #050506 100%)' }} >
                     
                     <h2 class="font-bold text-3xl text-center"> {op.titulo} </h2>
 
-                    <ul class="list-disc list-inside text-center">
+                    <ul class="list-disc list-inside text-center w-full">
                         <li> {op.descripcion}</li>
                         <li>{op.precio}</li>
                         <li>{op.tiempo}</li>
