@@ -35,6 +35,7 @@ TECNOLOGÍAS
 
 ESTRUCTURA DEL PROYECTO
 -----------------------
+```
 /
 ├── public/               # Recursos estáticos (video reel, imágenes, gifs)
 ├── src/
@@ -45,7 +46,7 @@ ESTRUCTURA DEL PROYECTO
 │   └── styles/           # Estilos globales
 ├── astro.config.mjs      # Configuración de Astro
 └── package.json
-
+```
 
 CONFIGURACIÓN
 -------------
